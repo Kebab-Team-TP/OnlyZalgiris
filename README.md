@@ -1,4 +1,4 @@
-# Kebab_Projektas
+# OnlyŽalgiris
 
 - Ką projektas daro?  
 Šis projektas pateikia naujausius komandos rezultatus, ateinančių rungtynių tvarkaraštį, rungtynių ir žaidėjų statistiką įvairiose komandos atstovaujamose lygose, bei pateikiamos naujausios naujienos bei fanams aktualius straipsnius.
