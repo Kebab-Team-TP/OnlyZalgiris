@@ -11,52 +11,54 @@ using System.IO;
 using Antlr.Runtime.Tree;
 using OnlyZalgiris.Models;
 using OnlyZalgiris.App;
+using System.Web.Services.Description;
 
 namespace OnlyZalgiris
 {
     public partial class Login : System.Web.UI.Page
     {
-
         static string relativePath = "App_Data/Users.json";
         static string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string fullPath = Path.Combine(currentDirectory, relativePath);
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                AuthenticateUser();
+            }
         }
 
-    protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+        private void AuthenticateUser()
         {
-            string json= File.ReadAllText(fullPath);
-            //var Users =;
-            Message.Text += Login1.UserName + '\n' + Login1.Password + '\n' + '\n';
-            List<User> users = UsersController.GetAll();
-            foreach (User user in users)
+            // Assuming the form uses method="post" and the input fields have name="username" and name="password"
+            string username = Request.Form["username"];
+            string password = Request.Form["password"];
+
+            // Read the user data from the file
+            string json = File.ReadAllText(fullPath);
+            List<User> users = UsersController.GetAll(); // Assuming this method deserializes the JSON to a List<User>
+
+            // Authenticate the user
+            bool isAuthenticated = users.Any(user => user.Username == username && user.Password == password);
+
+            if (isAuthenticated)
             {
-                Message.Text += user.Username.Equals(Login1.UserName).ToString() +'\n'+user.Password + '\n';
-                if (Login1.UserName.Equals(user.Username) && Login1.Password.Equals(user.Password))
-                {
-
-                    Session["UserName"] = user.Username;
-                    e.Authenticated = true;
-                    Session["authenticated"] = e.Authenticated;
-                    Response.Redirect("/");
-                }
-                else
-                {
-                    //Message.Text = "Try again";
-
-                }
+                Session["UserName"] = username;
+                Session["authenticated"] = true;
+                Response.Redirect("/"); // Redirect to home page on successful login
             }
-            Message.Text = "Try again";
-            //e.Authenticated = false;
+            else
+            {
+                // Optionally, display a login failed message. Make sure to add a Literal or Label control with ID="Message" in your ASPX page.
+                ExceptionLabel.Visible = true; // Make sure the label is visible
+                ExceptionLabel.Text = "Prisijungti nepavyko. Bandykite dar kartą.";
+            }
         }
 
         protected void LinkRegister_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Register.aspx");
         }
-        
     }
 }

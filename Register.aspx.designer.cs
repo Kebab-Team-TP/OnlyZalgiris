@@ -15,12 +15,12 @@ namespace OnlyZalgiris
     {
 
         /// <summary>
-        /// ExeptionLabel control.
+        /// ExceptionLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ExeptionLabel;
+        protected global::System.Web.UI.WebControls.Label ExceptionLabel;
     }
 }

@@ -1,11 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.cs" Inherits="OnlyZalgiris.Login" %>
-
+﻿<%@ Page Language="C#" enableEventValidation="false" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.cs" Inherits="OnlyZalgiris.Login" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-   
-    <asp:Label ID="Message" runat="server" Text=""></asp:Label>
-    <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate"></asp:Login>
+    <form id="loginForm" method="post" action="Login.aspx" >
+        <div style="margin: 15px auto;width:250px">
+            <div>
+                <asp:Label ID="ExceptionLabel" runat="server" Text="" 
+    style="color: red; font-size: larger;"></asp:Label>
+
+            </div>
+            <div class="form-group">
+                <label for="input_username">Naudotojo vardas</label>
+                <input type="text" class="form-control" id="input_username" name="username" placeholder="Vardas"/>
+            </div>
+            <div class="form-group">
+                <label for="input_password">Slaptažodis</label>
+                <input type="password" class="form-control" id="input_password" name="password" placeholder="Slaptažodis"/>
+            </div>
+            <input id="Submit1" type="submit" class="btn btn-primary" value="Prisijungti" />
+        </div>
+    </form>
     <br>
-    <div> Neturite paskyros? <asp:LinkButton ID="LinkRegister" href="/register" runat="server" OnClick="LinkRegister_Click">Užsiregistruoti</asp:LinkButton></div>
+<div class="d-flex justify-content-center mt-3"> 
+    <span class="mr-2 align-self-center">Neturite paskyros?&nbsp;&nbsp; </span> 
+    <asp:LinkButton ID="LinkRegister" runat="server" CssClass="btn btn-primary" OnClick="LinkRegister_Click">Užsiregistruoti</asp:LinkButton>
+</div>
+
 
 </asp:Content>

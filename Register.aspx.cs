@@ -28,7 +28,7 @@ namespace OnlyZalgiris
             string username = Request.Form["username"];
             string password = Request.Form["password"];
             string email = Request.Form["email"];
-            if (!string.IsNullOrEmpty(username) || !string.IsNullOrEmpty(password))
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(email))
             {
                 User newUser = new User();
                 newUser.Username = username;
@@ -42,11 +42,15 @@ namespace OnlyZalgiris
                 }
                 catch( Exception ex)
                 {
-                    ExeptionLabel.Text = ex.Message;
+                    ExceptionLabel.Text = ex.Message;
                     return;
                 }
-                ExeptionLabel.Text = "Registracija pavyko";
+                ExceptionLabel.Text = "Registracija pavyko";
 
+            }
+            else
+            {
+                ExceptionLabel.Text = "Nepalikite tuščių laukų";
             }
 
         }

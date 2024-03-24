@@ -27,17 +27,21 @@ namespace OnlyZalgiris
                 if (authenticated)
                 {
                     string userName = (string)Session["UserName"];
-                    user.Text = userName;
+                    hlLogin.Visible = false; 
+                    lblUsername.Visible = true; 
+                    lblUsername.Text = "Labas, " + userName;
                 }
                 else
                 {
-                    user.Text = "log in";
+                    hlLogin.Visible = true; 
+                    lblUsername.Visible = false; 
                 }
 
             }
             catch
             {
-                user.Text = "login";
+                hlLogin.Visible = true; 
+                lblUsername.Visible = false; 
 
             }
 
