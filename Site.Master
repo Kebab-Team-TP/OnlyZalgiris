@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="OnlyZalgiris.SiteMaster" %>
+﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="OnlyZalgiris.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -49,6 +49,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://zalgiris.lt/tickets/">Bilietai</a>
+                    </li>
+                    <li class="nav-item" style="float:right">
+                        <asp:Label ID="user" runat="server" Text="Label"></asp:Label>
+                        
+                    </li>
+                    <li class="nav-item" style="float:right">
+                        <a class="nav-link" href="/Login">Login</a>
                     </li>
                 </ul>
             </div>
